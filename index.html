@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shadow Scripting | Adopt Me Script</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #222;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #b366ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 0 0 20px rgba(138, 43, 226, 0.6), 0 0 30px rgba(138, 43, 226, 0.4);
+    }
+
+    .btn {
+      padding: 12px 20px;
+      background-color: #b366ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin: 10px;
+    }
+
+    .btn:hover {
+      background-color: #944dff;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: #00ff99;
+      font-size: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .message.show {
+      opacity: 1;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .get-executor {
+      font-size: 1.5rem;
+      color: #ff6666;
+      margin-top: 30px;
+      text-shadow: 0 0 10px rgba(255, 102, 102, 0.7);
+    }
+
+    .executor-btn {
+      margin-top: 20px;
+      background-color: #ff6666;
+    }
+
+    .executor-btn:hover {
+      background-color: #ff4d4d;
+    }
+
+    .coming-soon {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #ffcc00;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shadow Scripting Script Loader</h1>
+    <button class="btn" onclick="copyScript()">📱 Android</button>
+    <button class="btn" onclick="copyScript()">🖥️ Windows</button>
+    <button class="btn" onclick="copyScript()">🍎 iOS</button>
+    <button class="btn" onclick="copyServerLink()">🔗 Copy Server Link</button>
+    <button class="btn" onclick="subscribe()">🔔 Subscribe</button>
+    <div id="copyMessage" class="message">✅ Copied to clipboard!</div>
+    
+    <!-- New Heading for Executor -->
+    <h1 class="get-executor">Get Our Executor</h1>
+    
+    <!-- Executor for Android Button -->
+    <button class="btn executor-btn" onclick="openAndroidExecutor()">Executor for Android</button>
+
+    <!-- Executor for Windows Button -->
+    <button class="btn executor-btn" onclick="openWindowsExecutor()">Executor for Windows</button>
+
+    <!-- Executor for iOS Button -->
+    <button class="btn executor-btn" onclick="comingSoon('iOS')">Executor for iOS</button>
+
+    <!-- Executor for Mac Button -->
+    <button class="btn executor-btn" onclick="comingSoon('Mac')">Executor for Mac</button>
+
+    <!-- Coming Soon Message -->
+    <div id="comingSoonMessage" class="coming-soon"></div>
+
+    <div class="footer">Made by Shadow Scripting</div>
+  </div>
+
+  <script>
+    const scriptCode = `loadstring(game:HttpGet("https://raw.githubusercontent.com/textboy-roblox-scripter/shadow-scripting/refs/heads/main/adoptmepetspawnerscript"))()`;
+    const serverLink = "https://discord.gg/EZBGcbQCPz";
+    const youtubeLink = "https://www.youtube.com/@shadow-scripting?sub_confirmation=1";
+    const androidExecutorLink = "https://www.mediafire.com/file/kxwpa4x2upwapkk/Ronix_.apk/file";
+    const windowsExecutorLink = "https://filedm.com/8sfKc";
+
+    function copyScript() {
+      navigator.clipboard.writeText(scriptCode)
+        .then(() => showCopied())
+        .catch(() => alert("❌ Failed to copy script."));
+    }
+
+    function copyServerLink() {
+      navigator.clipboard.writeText(serverLink)
+        .then(() => showCopied())
+        .catch(() => alert("❌ Failed to copy server link."));
+    }
+
+    function subscribe() {
+      window.open(youtubeLink, '_blank');
+    }
+
+    function showCopied() {
+      const msg = document.getElementById("copyMessage");
+      msg.classList.add("show");
+      setTimeout(() => msg.classList.remove("show"), 2000);
+    }
+
+    // Function to open the Android executor download page
+    function openAndroidExecutor() {
+      window.open(androidExecutorLink, '_blank');
+    }
+
+    // Function to open the Windows executor download page
+    function openWindowsExecutor() {
+      window.open(windowsExecutorLink, '_blank');
+    }
+
+    // Function to show "Coming Soon" message for iOS and Mac executors
+    function comingSoon(platform) {
+      const message = document.getElementById("comingSoonMessage");
+      message.textContent = `🚧 ${platform} Executor Coming Soon!`;
+    }
+  </script>
+</body>
+</html>
